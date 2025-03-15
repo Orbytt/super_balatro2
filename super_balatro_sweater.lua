@@ -16,9 +16,9 @@ Line 482, Castle 2 ------------ Shows the use of reset_game_globals and colour v
 --Creates an atlas for cards to use
 SMODS.Atlas {
 	-- Key for code to find it with
-	key = "ModdedVanilla",
+	key = "super_balatro_sweater",
 	-- The name of the file, for the code to pull the atlas from
-	path = "ModdedVanilla.png",
+	path = "super_balatro_sweater.png",
 	-- Width of each sprite in 1x size
 	px = 71,
 	-- Height of each sprite in 1x size
@@ -28,7 +28,7 @@ SMODS.Atlas {
 
 SMODS.Joker {
 	-- How the code refers to the joker.
-	key = 'joker2',
+	key = 'hanafuda',
 	-- loc_text is the actual name and description that show in-game for the card.
 	loc_txt = {
 		name = 'Joker 2',
@@ -42,7 +42,10 @@ SMODS.Joker {
 				Multiple variables can be used in one space, as long as you separate them with a comma. {C:attention, X:chips, s:1.3} would be the yellow attention color, with a blue chips-colored background,, and 1.3 times the scale of other text.
 				You can find the vanilla joker descriptions and names as well as several other things in the localization files.
 				]]
-			"{C:mult}+#1# {} Mult"
+			"Gains {C:mult}+#1#{} Mult",
+			"when a card",
+			"changes suits",
+			"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
 		}
 	},
 	--[[
@@ -51,21 +54,21 @@ SMODS.Joker {
 		If you want to change the static value, you'd only change this number, instead
 		of going through all your code to change each instance individually.
 		]]
-	config = { extra = { mult = 4 } },
+        config = { extra = { mult = 0, mult_mod = 4 } },
 	-- loc_vars gives your loc_text variables to work with, in the format of #n#, n being the variable in order.
 	-- #1# is the first variable in vars, #2# the second, #3# the third, and so on.
 	-- It's also where you'd add to the info_queue, which is where things like the negative tooltip are.
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult } }
+		return { vars = { card.ability.extra.mult, card.ability.extra.mult_mod } }
 	end,
 	-- Sets rarity. 1 common, 2 uncommon, 3 rare, 4 legendary.
-	rarity = 1,
+	rarity = 2,
 	-- Which atlas key to pull from.
-	atlas = 'ModdedVanilla',
+	atlas = 'super_balatro_sweater',
 	-- This card's position on the atlas, starting at {x=0,y=0} for the very top left.
 	pos = { x = 0, y = 0 },
 	-- Cost of card in shop.
-	cost = 2,
+	cost = 6,
 	-- The functioning part of the joker, looks at context to decide what step of scoring the game is on, and then gives a 'return' value if something activates.
 	calculate = function(self, card, context)
 		-- Tests if context.joker_main == true.

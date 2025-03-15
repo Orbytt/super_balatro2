@@ -3,7 +3,7 @@
     "name": "Super Balatro Sweater",
     "author": ["orbytt"],
     "description": "Adds some new jokers to balatro",
-    "prefix": "superbalatro",
+    "prefix": "super_balatro_sweater",
     "main_file": "super_balatro_sweater.lua",
     "badge_colour": "c7638f",
     "dependencies": [
