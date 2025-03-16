@@ -25,6 +25,16 @@ SMODS.Atlas {
 	py = 95
 }
 
+local _card_change_suit = Card:change_suit
+
+-- We redefine the original function...
+function Card:change_suit(new_suit)
+    -- Then call the stored reference to the original function so it still works
+    _card_change_suit(self, new_suit)
+
+    -- Then do whatever we want after (or before if you want)
+    SMODS.calculate_context( { change_suit = true, changed_card = self } )
+end
 
 SMODS.Joker {
 	-- How the code refers to the joker.
