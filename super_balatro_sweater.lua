@@ -31,7 +31,7 @@ SMODS.Joker {
 	key = 'hanafuda',
 	-- loc_text is the actual name and description that show in-game for the card.
 	loc_txt = {
-		name = 'Joker 2',
+		name = 'Hanafuda Card',
 		text = {
 			--[[
 			The #1# is a variable that's stored in config, and is put into loc_vars.
